@@ -7,6 +7,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 0xff
       backgroundColor: Colors.indigo[600]!.withOpacity(0.179),
       body: NotesViewBody(),
     );
