@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/notes_view_body.dart';
+import '../widgets/custom_floating_action_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -8,8 +9,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // 0xff
+      floatingActionButton: const CustomFloatingActionButton(),
       backgroundColor: Colors.indigo[600]!.withOpacity(0.179),
-      body: NotesViewBody(),
+      body: const NotesViewBody(),
     );
   }
 }
