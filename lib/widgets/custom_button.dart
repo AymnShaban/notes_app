@@ -5,8 +5,8 @@ import 'package:notes_app/widgets/custom_text.dart';
 import '../views/edit_note_view.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
-
+  const CustomButton({super.key, required this.text});
+final String text;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
         ),
         child: Center(
           child: CustomText(
-            text: 'Add',
+            text: text,
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.black,
