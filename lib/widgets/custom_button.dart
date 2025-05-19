@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constant.dart';
 import 'package:notes_app/widgets/custom_text.dart';
 
-import '../views/edit_note_view.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text});
+  const CustomButton({super.key, required this.text, this.onTap});
 final String text;
+final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const EditNoteView();
-        }));
-      },
+      onTap:onTap,
       child: Container(
         height: 55,
         width: MediaQuery.of(context).size.width,
