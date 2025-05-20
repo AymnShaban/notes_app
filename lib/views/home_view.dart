@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       // 0xff
       floatingActionButton: const CustomFloatingActionButton(),
-      backgroundColor: Colors.indigo[600]!.withOpacity(0.179),
+      backgroundColor: Colors.indigo[600]!.withValues(alpha: 0.179),
       body: const NotesViewBody(),
     );
   }
