@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/add_notes_cubit/add_notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
-
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -42,24 +41,30 @@ class _AddNoteFormStateState extends State<AddNoteFormState> {
                 subTitle = value;
               }),
           const SizedBox(height: 16),
-          CustomButton(
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  var noteModel = NoteModel(
-                    title: title!,
-                    subTitle: subTitle!,
-                    date: DateTime.now().toString(),
-                    color: Colors.indigo.toARGB32(),
-                  );
-                  BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
-                } else {
-                  autoValidateMode = AutovalidateMode.always;
-                  // added setState after AutoValidateMode for runtime validation checker
-                  setState(() {});
-                }
-              },
-              text: 'Add'),
+          BlocBuilder<AddNotesCubit, AddNotesState>(
+            builder: (context, state) {
+              return CustomButton(
+                  isLoading: state is AddNotesLoading ? true : false,
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      var noteModel = NoteModel(
+                        title: title!,
+                        subTitle: subTitle!,
+                        date: DateTime.now().toString(),
+                        color: Colors.indigo.toARGB32(),
+                      );
+                      BlocProvider.of<AddNotesCubit>(context)
+                          .addNote(noteModel);
+                    } else {
+                      autoValidateMode = AutovalidateMode.always;
+                      // added setState after AutoValidateMode for runtime validation checker
+                      setState(() {});
+                    }
+                  },
+                  text: 'Add');
+            },
+          ),
           const SizedBox(height: 16),
         ],
       ),
