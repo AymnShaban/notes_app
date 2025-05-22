@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/widgets/custom_text.dart';
 
 class CustomNotesItem extends StatelessWidget {
-  const CustomNotesItem({super.key});
+  const CustomNotesItem({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +21,14 @@ class CustomNotesItem extends StatelessWidget {
         padding: const EdgeInsets.only(top: 20, bottom: 25, left: 15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: const Color(0xffFFCD7A),
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
               title: CustomText(
-                text: 'Flutter tips',
+                text: note.title,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -33,9 +36,9 @@ class CustomNotesItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(bottom: 10, top: 12),
                 child: CustomText(
-                  text: 'Learn flutter is the right way ',
+                  text: note.subTitle,
                   fontSize: 25,
-                  color: Colors.black.withOpacity(0.6),
+                  color: Colors.black.withValues(alpha: 0.6),
                 ),
               ),
               trailing: const Icon(
@@ -46,9 +49,9 @@ class CustomNotesItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: CustomText(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withValues(alpha: 0.6),
                 fontSize: 16,
-                text: 'May20,2022 ',
+                text: note.date,
               ),
             )
           ],

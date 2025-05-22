@@ -4,7 +4,7 @@ import 'package:notes_app/widgets/custom_text.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, required this.text, this.onTap, this.isLoading = true});
+      {super.key, required this.text, this.onTap, this.isLoading = false});
 
   final String text;
   final void Function()? onTap;
