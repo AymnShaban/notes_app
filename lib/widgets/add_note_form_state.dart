@@ -64,6 +64,7 @@ class _AddNoteFormStateState extends State<AddNoteFormState> {
                       autoValidateMode = AutovalidateMode.always;
                       // added setState after AutoValidateMode for runtime validation checker
                       setState(() {});
+
                     }
                   },
                   text: 'Add');
