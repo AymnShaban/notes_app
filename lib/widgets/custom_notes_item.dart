@@ -29,7 +29,7 @@ class CustomNotesItem extends StatelessWidget {
             ListTile(
               title: CustomText(
                 text: note.title,
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -37,12 +37,15 @@ class CustomNotesItem extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 10, top: 12),
                 child: CustomText(
                   text: note.subTitle,
-                  fontSize: 25,
+                  fontSize: 20,
                   color: Colors.black.withValues(alpha: 0.6),
                 ),
               ),
-              trailing: const Icon(
-                FontAwesomeIcons.trash,
+              trailing: IconButton(
+                onPressed: () {
+                  note.delete();
+                },
+                icon: const Icon(FontAwesomeIcons.trash),
                 color: Colors.black,
               ),
             ),
