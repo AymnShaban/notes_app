@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/colors_list_view.dart';
 import '../cubits/add_notes_cubit/add_notes_cubit.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
@@ -42,6 +43,8 @@ class _AddNoteFormStateState extends State<AddNoteFormState> {
                 subTitle = value;
               }),
           const SizedBox(height: 16),
+          const ColorsListView(),
+          const SizedBox(height: 6),
           BlocBuilder<AddNotesCubit, AddNotesState>(
             builder: (context, state) {
               return CustomButton(
@@ -64,7 +67,6 @@ class _AddNoteFormStateState extends State<AddNoteFormState> {
                       autoValidateMode = AutovalidateMode.always;
                       // added setState after AutoValidateMode for runtime validation checker
                       setState(() {});
-
                     }
                   },
                   text: 'Add');
