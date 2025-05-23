@@ -33,14 +33,14 @@ class CustomNotesItem extends StatelessWidget {
                 text: note.title,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(bottom: 10, top: 12),
                 child: CustomText(
                   text: note.subTitle,
                   fontSize: 20,
-                  color: Colors.black.withValues(alpha: 0.6),
+                  color: Colors.white60,
                 ),
               ),
               trailing: IconButton(
@@ -49,13 +49,13 @@ class CustomNotesItem extends StatelessWidget {
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
                 icon: const Icon(FontAwesomeIcons.trash),
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: CustomText(
-                color: Colors.black.withValues(alpha: 0.6),
+                color: Colors.white60,
                 fontSize: 16,
                 text: note.date,
               ),
