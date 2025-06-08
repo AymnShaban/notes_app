@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_notes_cubit/add_notes_cubit.dart';
 
+import '../constant.dart';
+
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isSelect, required this.color});
 
@@ -34,15 +36,7 @@ class ColorsListView extends StatefulWidget {
 }
 
 int currentIndex = 0;
-List<Color> colors = const [
-  Color(0xff2f325a),
-  Color(0xff5a3b44),
-  Color(0xff302716),
-  Color(0xff0d6363),
-  Color(0xff253f67),
-  Color(0xff003f5c),
-  Color(0xff00202e),
-];
+
 
 class _ColorsListViewState extends State<ColorsListView> {
   @override
@@ -56,17 +50,17 @@ class _ColorsListViewState extends State<ColorsListView> {
             child: GestureDetector(
               onTap: () {
                 currentIndex = index;
-                BlocProvider.of<AddNotesCubit>(context).color = colors[index];
+                BlocProvider.of<AddNotesCubit>(context).color = kColors[index];
                 setState(() {});
               },
               child: ColorItem(
                 isSelect: currentIndex == index,
-                color: colors[index],
+                color: kColors[index],
               ),
             ),
           );
         },
-        itemCount: colors.length,
+        itemCount: kColors.length,
         scrollDirection: Axis.horizontal,
       ),
     );

@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
+import '../constant.dart';
 import '../models/note_model.dart';
+import 'colors_list_view.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   const EditNoteViewBody({super.key, required this.note});
@@ -22,7 +24,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        children: [
+        children: <Widget>[
           CustomAppBar(
             title: 'Edit note',
             icon: Icons.check,
@@ -50,7 +52,56 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             },
           ),
           const SizedBox(height: 16),
+          EditNotesColorList(
+            note: widget.note,
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class EditNotesColorList extends StatefulWidget {
+  const EditNotesColorList({super.key, required this.note});
+
+  final NoteModel note;
+
+  @override
+  State<EditNotesColorList> createState() => _EditNotesColorListState();
+}
+
+class _EditNotesColorListState extends State<EditNotesColorList> {
+  late int currentIndex;
+
+  @override
+  void initState() {
+    currentIndex = kColors.indexOf(Color(widget.note.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 24 * 2 + 2,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: GestureDetector(
+              onTap: () {
+                currentIndex = index;
+                widget.note.color = kColors[index].toARGB32();
+                setState(() {});
+              },
+              child: ColorItem(
+                isSelect: currentIndex == index,
+                color: kColors[index],
+              ),
+            ),
+          );
+        },
+        itemCount: kColors.length,
+        scrollDirection: Axis.horizontal,
       ),
     );
   }
