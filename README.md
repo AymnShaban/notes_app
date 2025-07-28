@@ -1,16 +1,23 @@
 # notes_app
 
-A new Flutter project.
+ • A Flutter-based notes application for creating, editing, and organizing notes with offline 
+persistence and a clean user interface. 
 
-## Getting Started
+• Used Hive for fast, local NoSQL storage to enable seamless note management (add, edit ,delete). 
 
-This project is a starting point for a Flutter application.
+• Implemented Bloc for robust state management, ensuring clear separation of business logic and UI 
+layers. 
 
-A few resources to get you started if this is your first Flutter project:
+• Enhanced UX with Font Awesome icons for intuitive navigation and visual consistency. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+• Integrated modal_progress_hud_nsn to display loading indicators during async operations. 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+• Formatted dates dynamically using intl for locale-aware timestamp displays. 
+
+• Designed with null safety and scalable architecture to simplify maintenance and future extensions.
+
+
+
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/f5ce457e-dd25-4365-b90b-d8f6090c66e2" width="30%" />
+</p>
